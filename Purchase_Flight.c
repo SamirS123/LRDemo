@@ -9,7 +9,9 @@ Purchase_Flight()
 
 	lr_think_time(68);
 
-	web_submit_data("confirmation.php", 
+	lr_start_transaction("04_Blazedemo_Purchase_Flight");
+
+		web_submit_data("confirmation.php", 
 		"Action=https://blazedemo.com/confirmation.php", 
 		"Method=POST", 
 		"RecContentType=text/html", 
@@ -30,6 +32,9 @@ Purchase_Flight()
 		"Name=nameOnCard", "Value=XYZ", ENDITEM, 
 		"Name=rememberMe", "Value=on", ENDITEM, 
 		LAST);
+
+	lr_end_transaction("04_Blazedemo_Purchase_Flight", LR_AUTO);
+
 
 	return 0;
 }

@@ -9,7 +9,9 @@ Choose_Flight()
 
 	lr_think_time(22);
 
-	web_submit_data("purchase.php", 
+	lr_start_transaction("03_Blazedemo_Choose_Flight");
+
+		web_submit_data("purchase.php", 
 		"Action=https://blazedemo.com/purchase.php", 
 		"Method=POST", 
 		"RecContentType=text/html", 
@@ -23,6 +25,9 @@ Choose_Flight()
 		"Name=fromPort", "Value=Philadelphia", ENDITEM, 
 		"Name=toPort", "Value=New York", ENDITEM, 
 		LAST);
+
+	lr_end_transaction("03_Blazedemo_Choose_Flight", LR_AUTO);
+
 
 	return 0;
 }

@@ -9,7 +9,9 @@ Select_Flights()
 
 	lr_think_time(35);
 
-	web_submit_data("reserve.php", 
+	lr_start_transaction("01_Blazedemo_Select_Flight");
+
+		web_submit_data("reserve.php", 
 		"Action=https://blazedemo.com/reserve.php", 
 		"Method=POST", 
 		"RecContentType=text/html", 
@@ -20,6 +22,9 @@ Select_Flights()
 		"Name=fromPort", "Value=Philadelphia", ENDITEM, 
 		"Name=toPort", "Value=New York", ENDITEM, 
 		LAST);
+
+	lr_end_transaction("01_Blazedemo_Select_Flight", LR_AUTO);
+
 
 	return 0;
 }
